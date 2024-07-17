@@ -1,3 +1,21 @@
 # Write your MySQL query statement below
 SELECT name FROM Customer
 WHERE  referee_id != 2 OR referee_id IS null;
+
+# solution 2
+select name from Customer
+where referee_id <> 2
+or referee_id is null;
+
+#solution 3
+select name from Customer
+where IFNULL(referee_id, -1) <> 2;
+
+# here ifnull(referee_id, -1) substitue -1 at a place of null before  checking the condition
+
+#solution 3
+select name from Customer
+where COALESCE(referee_id, referee_num, -1) <> 2;
+
+# here COALESCE(referee_id, referee_num, -1) use for substitue -1 at a place of referee_num 
+# in the referee_id column before checking the condition
